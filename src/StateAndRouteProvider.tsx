@@ -1,0 +1,23 @@
+import { createBrowserHistory } from 'history'
+import { Provider } from 'mobx-react'
+import { RouterStore, syncHistoryWithStore } from 'mobx-react-router'
+import * as React from 'react'
+import { Router } from 'react-router'
+import { Route } from 'react-router-dom'
+
+import store from './stores'
+import App from './views/App'
+
+export default () => {
+  const browserHistory = createBrowserHistory()
+  const routingStore = new RouterStore()
+  const history = syncHistoryWithStore(browserHistory, routingStore)
+
+  return (
+    <Provider {...store}>
+      <Router history={history}>
+        <Route path="/" component={App} />
+      </Router>
+    </Provider>
+  )
+}
