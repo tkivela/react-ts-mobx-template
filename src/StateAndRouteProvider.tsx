@@ -1,4 +1,5 @@
 import { createBrowserHistory } from 'history'
+import { configure } from 'mobx'
 import { Provider } from 'mobx-react'
 import { RouterStore, syncHistoryWithStore } from 'mobx-react-router'
 import * as React from 'react'
@@ -7,6 +8,8 @@ import { Route } from 'react-router-dom'
 
 import store from './stores'
 import App from './views/App'
+
+configure({ enforceActions: true })
 
 export default () => {
   const browserHistory = createBrowserHistory()
