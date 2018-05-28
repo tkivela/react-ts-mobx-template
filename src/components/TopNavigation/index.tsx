@@ -39,7 +39,7 @@ interface IAppProps {
 
 @inject('appStore')
 @observer
-class App extends React.Component<IAppProps, any> {
+class App extends React.Component<IAppProps> {
   public render() {
     return (
       <div className={appStyles}>

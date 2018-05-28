@@ -34,7 +34,7 @@
     "babel": "^6.23.0",
     "babel-plugin-transform-decorators": "^6.24.1",
     "babel-preset-mobx": "^1.0.2",
-    "prettier": "^1.12.1",
+    "prettier": "^1.13.0",
     "react-app-rewire-mobx": "^1.0.8",
     "react-app-rewired": "^1.5.2",
     "tslint-config-prettier": "^1.12.0",

@@ -62,6 +62,7 @@ The project contains simple application to demonstrate following features:
 
 * Observables & Observers
 * Actions (both sync & async)
+* Computed state
 * Calling an API with async action and updating results to MobX store
 * Linting & Formatting
 * Testing actions & store with Jest unit tests

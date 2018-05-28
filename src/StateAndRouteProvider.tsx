@@ -13,8 +13,7 @@ configure({ enforceActions: true })
 
 export default () => {
   const browserHistory = createBrowserHistory()
-  const routingStore = new RouterStore()
-  const history = syncHistoryWithStore(browserHistory, routingStore)
+  const history = syncHistoryWithStore(browserHistory, new RouterStore())
 
   return (
     <Provider {...store}>
