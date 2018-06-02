@@ -20,7 +20,6 @@
 *.css
 
 # yarn
-yarn.lock
 yarn-debug.log*
 yarn-error.log*
 
