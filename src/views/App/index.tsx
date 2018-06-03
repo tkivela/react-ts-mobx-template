@@ -1,5 +1,6 @@
 import * as React from 'react'
-import { Route } from 'react-router-dom'
+
+import { Router } from '@reach/router'
 
 import Notes from '../../components/Notes'
 import TopNavigation from '../../components/TopNavigation'
@@ -14,8 +15,10 @@ export default () => {
     <div>
       <DevTools />
       <TopNavigation />
-      <Route exact={true} path="/" component={Notes} />
-      <Route path="/notecount" component={NoteCount} />
+      <Router>
+        <Notes path="/" />
+        <NoteCount path="/notecount" />
+      </Router>
     </div>
   )
 }

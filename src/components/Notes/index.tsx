@@ -5,6 +5,7 @@ import { AppStore } from '../../stores'
 import Note from '../Note'
 
 interface INotesProps {
+  path?: string
   appStore?: AppStore
 }
 

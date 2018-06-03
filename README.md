@@ -6,7 +6,7 @@ Details:
 * State management with [MobX](https://mobx.js.org/)
 * CSS in JS with [Emotion](https://emotion.sh/)
 * HTTP requests with [Axios](https://github.com/axios/axios)
-* Routing with [Mobx-react-router](https://github.com/alisd23/mobx-react-router ) and [React-router](https://reacttraining.com/react-router/)
+* Routing with [Reach Router](https://reach.tech/router)
 * Linting with [TSLint](https://github.com/palantir/tslint)
 * Code formatting with [Prettier](https://prettier.io/)
 * Testing with [Jest](https://facebook.github.io/jest/)

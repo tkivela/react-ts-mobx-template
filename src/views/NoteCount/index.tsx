@@ -10,6 +10,7 @@ const noteCountStyles = css`
 `
 
 interface INoteCountProps {
+  path?: string
   appStore?: AppStore
 }
 

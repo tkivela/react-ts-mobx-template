@@ -1,7 +1,8 @@
 import { css } from 'emotion'
 import { inject, observer } from 'mobx-react'
 import * as React from 'react'
-import { Link } from 'react-router-dom'
+
+import { Link } from '@reach/router'
 
 import CustomButton, { blueButton, orangeButton } from '../../components/CustomButton'
 import { AppStore } from '../../stores'
