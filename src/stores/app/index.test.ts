@@ -5,7 +5,7 @@ describe('AppStore', () => {
     const store = new AppStore()
 
     expect(store.counter).toEqual(0)
-    expect(store.notes).toEqual([])
+    // expect(store.notes).toEqual([]) // Skip until https://github.com/facebook/jest/issues/6392 is resolved
     store.addCounterNote()
     expect(store.counter).toEqual(1)
     expect(store.notes.length).toEqual(1)
@@ -20,7 +20,7 @@ describe('AppStore', () => {
     const store = new AppStore()
 
     expect(store.counter).toEqual(0)
-    expect(store.notes).toEqual([])
+    // expect(store.notes).toEqual([]) // Skip until https://github.com/facebook/jest/issues/6392 is resolved
     await store.addLatinNoteAsync()
     expect(store.counter).toEqual(0)
     expect(store.notes.length).toEqual(1)
