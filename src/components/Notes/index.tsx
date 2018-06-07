@@ -13,7 +13,7 @@ interface INotesProps {
 @observer
 class Notes extends React.Component<INotesProps> {
   public render() {
-    return this.props.appStore!.notes.map(note => (
+    return this.props.appStore!.notes.map((note) => (
       <Note key={note.id} text={note.title} color={note.color} />
     ))
   }

@@ -13,7 +13,7 @@ export const orangeButton = {
   hoverBackgroundColor: '#FF983C'
 }
 
-const buttonStyle = props => css`
+const buttonStyle = (props) => css`
   body {
     font-family: 'sans-serif';
   }
@@ -35,7 +35,7 @@ const buttonStyle = props => css`
   }
 `
 
-export default props => {
+export default (props) => {
   return (
     <div className={buttonStyle(props)} onClick={props.onClickHandler}>
       <div className="btn">{props.title}</div>
