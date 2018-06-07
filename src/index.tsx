@@ -1,8 +1,11 @@
+import { configure } from 'mobx'
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 
 import registerServiceWorker from './registerServiceWorker'
-import Root from './StateProvider'
+import App from './views/App'
 
-ReactDOM.render(<Root />, document.getElementById('root') as HTMLElement)
+configure({ enforceActions: true })
+
+ReactDOM.render(<App />, document.getElementById('root') as HTMLElement)
 registerServiceWorker()
