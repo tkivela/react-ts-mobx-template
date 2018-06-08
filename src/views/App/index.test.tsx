@@ -1,10 +1,8 @@
 import * as React from 'react'
-import * as ReactDOM from 'react-dom'
+import { render } from 'react-testing-library'
 
 import Root from './index'
 
 it('renders without crashing', () => {
-  const div = document.createElement('div')
-  ReactDOM.render(<Root />, div)
-  ReactDOM.unmountComponentAtNode(div)
+  render(<Root />)
 })
