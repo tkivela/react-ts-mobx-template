@@ -23,8 +23,10 @@ const getRandomColor = (): INoteColor => {
 }
 
 export default class AppStore {
-  @observable public counter = 0
-  @observable public notes: Array<{ id: string; title: string; color: INoteColor }> = []
+  @observable
+  public counter = 0
+  @observable
+  public notes: Array<{ id: string; title: string; color: INoteColor }> = []
   @computed
   get notescount() {
     return this.notes.length
