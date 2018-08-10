@@ -89,13 +89,17 @@
   version "0.0.29"
   resolved "https://registry.npmjs.org/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
 
-"@types/node@*", "@types/node@10.5.6":
+"@types/node@*":
   version "10.5.6"
   resolved "https://registry.npmjs.org/@types/node/-/node-10.5.6.tgz#1640f021dd0eaf12e731e54198c12ad2e020dc8e"
 
-"@types/react-dom@^16.0.6":
-  version "16.0.6"
-  resolved "https://registry.npmjs.org/@types/react-dom/-/react-dom-16.0.6.tgz#f1a65a4e7be8ed5d123f8b3b9eacc913e35a1a3c"
+"@types/node@10.5.7":
+  version "10.5.7"
+  resolved "https://registry.npmjs.org/@types/node/-/node-10.5.7.tgz#960d9feb3ade2233bcc9843c918d740b4f78a7cf"
+
+"@types/react-dom@^16.0.7":
+  version "16.0.7"
+  resolved "https://registry.npmjs.org/@types/react-dom/-/react-dom-16.0.7.tgz#54d0f867a76b90597e8432030d297982f25c20ba"
   dependencies:
     "@types/node" "*"
     "@types/react" "*"
@@ -1047,9 +1051,9 @@ babel-preset-jest@^22.0.1, babel-preset-jest@^22.4.4:
     babel-plugin-jest-hoist "^22.4.4"
     babel-plugin-syntax-object-rest-spread "^6.13.0"
 
-babel-preset-mobx@1.0.2:
-  version "1.0.2"
-  resolved "https://registry.npmjs.org/babel-preset-mobx/-/babel-preset-mobx-1.0.2.tgz#f19bdf9c9357107ac6a20e4cb382de8537afb23b"
+babel-preset-mobx@1.0.3:
+  version "1.0.3"
+  resolved "https://registry.npmjs.org/babel-preset-mobx/-/babel-preset-mobx-1.0.3.tgz#41d017362972b7b84262af1ddff7ab39bca0ba99"
   dependencies:
     babel-plugin-transform-class-properties "^6.24.1"
     babel-plugin-transform-decorators-legacy "^1.3.4"
@@ -2279,9 +2283,9 @@ dom-serializer@0:
     domelementtype "~1.1.1"
     entities "~1.1.1"
 
-dom-testing-library@^3.0.1:
-  version "3.0.2"
-  resolved "https://registry.npmjs.org/dom-testing-library/-/dom-testing-library-3.0.2.tgz#fe1a857205a02132b978d0e15f208ea40cadc07f"
+dom-testing-library@^3.1.0:
+  version "3.2.0"
+  resolved "https://registry.npmjs.org/dom-testing-library/-/dom-testing-library-3.2.0.tgz#dc29bc2c53574832d8a778b640bb56dbba1c64ed"
   dependencies:
     mutationobserver-shim "^0.3.2"
     pretty-format "^22.4.3"
@@ -5669,9 +5673,9 @@ preserve@^0.2.0:
   version "0.2.0"
   resolved "https://registry.npmjs.org/preserve/-/preserve-0.2.0.tgz#815ed1f6ebc65926f865b310c0713bcb3315ce4b"
 
-prettier@1.14.0:
-  version "1.14.0"
-  resolved "https://registry.npmjs.org/prettier/-/prettier-1.14.0.tgz#847c235522035fd988100f1f43cf20a7d24f9372"
+prettier@1.14.2:
+  version "1.14.2"
+  resolved "https://registry.npmjs.org/prettier/-/prettier-1.14.2.tgz#0ac1c6e1a90baa22a62925f41963c841983282f9"
 
 pretty-bytes@^4.0.2:
   version "4.0.2"
@@ -5959,11 +5963,11 @@ react-scripts-ts@2.17.0:
   optionalDependencies:
     fsevents "^1.1.3"
 
-react-testing-library@4.1.6:
-  version "4.1.6"
-  resolved "https://registry.npmjs.org/react-testing-library/-/react-testing-library-4.1.6.tgz#10e15eb18d2dacfd6d7bbba772c782ab47f4d07f"
+react-testing-library@5.0.0:
+  version "5.0.0"
+  resolved "https://registry.npmjs.org/react-testing-library/-/react-testing-library-5.0.0.tgz#a6d63dfb0efb69b4b0f7035cff11310b1a78a702"
   dependencies:
-    dom-testing-library "^3.0.1"
+    dom-testing-library "^3.1.0"
     wait-for-expect "^1.0.0"
 
 react@16.4.2:
