@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "react-app-rewired start --scripts-version react-scripts-ts",
-    "test": "yarn lint && react-app-rewired test --env=jsdom --scripts-version react-scripts-ts",
+    "test": "react-app-rewired test --env=jsdom --scripts-version react-scripts-ts",
     "build": "CI=true yarn test && react-app-rewired build --scripts-version react-scripts-ts",
     "lint": "yarn format && tslint -c tslint.json 'src/**/*.{ts,tsx}' --fix && tsc",
     "format": "prettier --write 'src/**/*.ts*'"
