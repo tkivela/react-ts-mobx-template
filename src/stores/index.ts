@@ -1,12 +1,12 @@
-import AppStore from './app/index'
+import NotesStore from './notes/index'
 
 class RootStore {
-  public appStore: AppStore
+  public notesStore: NotesStore
 
   constructor() {
-    this.appStore = new AppStore()
+    this.notesStore = new NotesStore()
   }
 }
 
 export default new RootStore()
-export { AppStore }
+export { NotesStore }

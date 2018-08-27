@@ -1,19 +1,19 @@
 import { inject, observer } from 'mobx-react'
 import * as React from 'react'
 
-import { AppStore } from '../../stores'
-import Note from '../Note'
+import Note from '../../components/Note'
+import { NotesStore } from '../../stores'
 
 interface INotesProps {
   path?: string
-  appStore?: AppStore
+  notesStore?: NotesStore
 }
 
-@inject('appStore')
+@inject('notesStore')
 @observer
 class Notes extends React.Component<INotesProps> {
   public render() {
-    return this.props.appStore!.notes.map((note) => (
+    return this.props.notesStore!.notes.map((note) => (
       <Note key={note.id} text={note.title} color={note.color} />
     ))
   }

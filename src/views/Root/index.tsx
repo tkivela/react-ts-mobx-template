@@ -3,10 +3,10 @@ import * as React from 'react'
 
 import { Router } from '@reach/router'
 
-import Notes from '../../components/Notes'
 import TopNavigation from '../../components/TopNavigation'
 import store from '../../stores'
 import NoteCount from '../NoteCount'
+import Notes from '../Notes'
 
 const { Fragment } = React
 const DevTools =

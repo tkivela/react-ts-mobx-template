@@ -5,7 +5,7 @@ import * as React from 'react'
 import { Link } from '@reach/router'
 
 import CustomButton, { blueButton, orangeButton } from '../../components/CustomButton'
-import { AppStore } from '../../stores'
+import { NotesStore } from '../../stores'
 import logo from './logo.svg'
 
 const appStyles = css`
@@ -35,12 +35,12 @@ const appStyles = css`
 `
 
 interface IAppProps {
-  appStore?: AppStore
+  notesStore?: NotesStore
 }
 
-@inject('appStore')
+@inject('notesStore')
 @observer
-class App extends React.Component<IAppProps> {
+export default class extends React.Component<IAppProps> {
   public render() {
     return (
       <div className={appStyles}>
@@ -55,13 +55,13 @@ class App extends React.Component<IAppProps> {
               title="Add a latin note"
               colors={blueButton}
               onClickHandler={() => {
-                this.props.appStore!.addLatinNoteAsync()
+                this.props.notesStore!.addLatinNoteAsync()
               }}
             />
             <CustomButton
               title="Add a counter note"
               onClickHandler={() => {
-                this.props.appStore!.addCounterNote()
+                this.props.notesStore!.addCounterNote()
               }}
               colors={orangeButton}
             />
@@ -71,5 +71,3 @@ class App extends React.Component<IAppProps> {
     )
   }
 }
-
-export default App

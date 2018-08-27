@@ -22,7 +22,7 @@ const getRandomColor = (): INoteColor => {
   }
 }
 
-export default class AppStore {
+export default class NotesStore {
   @observable
   public counter = 0
   @observable

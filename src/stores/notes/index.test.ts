@@ -1,8 +1,8 @@
-import AppStore from './index'
+import NotesStore from './index'
 
-describe('AppStore', () => {
+describe('NotesStore', () => {
   it('addCounterNote should add new note to notes array beginning', () => {
-    const store = new AppStore()
+    const store = new NotesStore()
 
     expect(store.counter).toEqual(0)
     // expect(store.notes).toEqual([]) // Skip until https://github.com/facebook/jest/issues/6392 is resolved
@@ -17,7 +17,7 @@ describe('AppStore', () => {
   })
 
   it('addLatinNoteAsync should add new note to notes array beginning', async () => {
-    const store = new AppStore()
+    const store = new NotesStore()
 
     expect(store.counter).toEqual(0)
     // expect(store.notes).toEqual([]) // Skip until https://github.com/facebook/jest/issues/6392 is resolved
