@@ -1,5 +1,5 @@
-import axios from 'axios'
 import { action, computed, observable } from 'mobx'
+import { getComment } from '../../apis/jsonplaceholder'
 
 interface INoteColor {
   r: number
@@ -42,9 +42,7 @@ export default class NotesStore {
   public async addLatinNoteAsync() {
     try {
       const commentNumber = Math.floor(Math.random() * 500) + 1 // randomize comment number (1..500)
-      const response = await axios.get(
-        `https://jsonplaceholder.typicode.com/comments/${commentNumber}`
-      )
+      const response = await getComment(commentNumber)
       this.addNoteToArray(response.data.name, getRandomColor())
     } catch (error) {
       this.addNoteToArray('Error fetching note from web', {
