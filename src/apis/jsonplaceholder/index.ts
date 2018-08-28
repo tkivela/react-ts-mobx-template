@@ -1,4 +1,4 @@
-import axios, { AxiosPromise } from 'axios'
+import { IRestStore, RestStoreFactory } from '../../stores/rest'
 
 export interface IJsonPlaceHolderResponse {
   postId: number
@@ -8,10 +8,17 @@ export interface IJsonPlaceHolderResponse {
   body: string
 }
 
-const getApiCallUrl = (commentNumber: number): string => {
-  return `https://jsonplaceholder.typicode.com/comments/${commentNumber}`
+export interface IJsonPlaceHolderApi {
+  getCommentRest: IRestStore<IJsonPlaceHolderResponse>
+  getComment: (commentNumber: number) => Promise<IJsonPlaceHolderResponse> | jest.Mock
 }
 
-export const getComment = (commentNumber: number): AxiosPromise<IJsonPlaceHolderResponse> => {
-  return axios.get(getApiCallUrl(commentNumber))
+export default class JsonPlaceHolderApi implements IJsonPlaceHolderApi {
+  public getCommentRest: IRestStore<IJsonPlaceHolderResponse> = RestStoreFactory<
+    IJsonPlaceHolderResponse
+  >()
+
+  public getComment = (commentNumber: number): Promise<IJsonPlaceHolderResponse> | jest.Mock => {
+    return this.getCommentRest.get(`https://jsonplaceholder.typicode.com/comments/${commentNumber}`)
+  }
 }

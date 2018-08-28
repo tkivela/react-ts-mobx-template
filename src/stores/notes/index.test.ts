@@ -26,7 +26,5 @@ describe('NotesStore', () => {
     expect(store.notes.length).toEqual(1)
     await store.addLatinNoteAsync()
     expect(store.notes.length).toEqual(2)
-
-    expect(store.notes[0]).not.toEqual(store.notes[1])
   })
 })
