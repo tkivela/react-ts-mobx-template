@@ -7,10 +7,10 @@ export default class MockRestStore<T> implements IRestStore<T> {
   public response?: AxiosResponse
   public error: any
   public data: T
-  public del: () => jest.Mock
-  public get: () => jest.Mock
-  public patch: () => jest.Mock
-  public post: () => jest.Mock
+  public del: () => any
+  public get: () => any
+  public patch: () => any
+  public post: () => any
 
   constructor() {
     const httpMethodMock = jest.fn()

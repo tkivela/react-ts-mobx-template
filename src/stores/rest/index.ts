@@ -15,10 +15,10 @@ export interface IRestStore<T> {
   response?: AxiosResponse
   error: any
   data: T
-  del(url: string): Promise<T> | jest.Mock
-  get(url: string): Promise<T> | jest.Mock
-  patch(url: string, body: any): Promise<T> | jest.Mock
-  post(url: string, body: any): Promise<T> | jest.Mock
+  del(url: string): Promise<AxiosResponse>
+  get(url: string): Promise<AxiosResponse>
+  patch(url: string, body: any): Promise<AxiosResponse>
+  post(url: string, body: any): Promise<AxiosResponse>
 }
 
 export default class RestStore<T> implements IRestStore<T> {
