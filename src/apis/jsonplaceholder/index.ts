@@ -1,8 +1,5 @@
-import { AxiosResponse } from 'axios'
-
 import { IRestStore, RestStoreFactory } from '../../stores/rest'
-
-export interface IJsonPlaceHolderResponse {
+interface IJsonPlaceHolderGetCommentResponse {
   postId: number
   id: number
   name: string
@@ -11,16 +8,21 @@ export interface IJsonPlaceHolderResponse {
 }
 
 export interface IJsonPlaceHolderApi {
-  getCommentRest: IRestStore<IJsonPlaceHolderResponse>
-  getComment: (commentNumber: number) => Promise<AxiosResponse<IJsonPlaceHolderResponse>>
+  getCommentRest: IRestStore<IJsonPlaceHolderGetCommentResponse>
+  getComment: (commentNumber: number) => Promise<IJsonPlaceHolderGetCommentResponse>
 }
 
 export default class JsonPlaceHolderApi implements IJsonPlaceHolderApi {
-  public getCommentRest: IRestStore<IJsonPlaceHolderResponse> = RestStoreFactory<
-    IJsonPlaceHolderResponse
+  public getCommentRest: IRestStore<IJsonPlaceHolderGetCommentResponse> = RestStoreFactory<
+    IJsonPlaceHolderGetCommentResponse
   >()
 
-  public getComment = (commentNumber: number): Promise<AxiosResponse<IJsonPlaceHolderResponse>> => {
-    return this.getCommentRest.get(`https://jsonplaceholder.typicode.com/comments/${commentNumber}`)
+  public getComment = async (
+    commentNumber: number
+  ): Promise<IJsonPlaceHolderGetCommentResponse> => {
+    const res = await this.getCommentRest.get(
+      `https://jsonplaceholder.typicode.com/comments/${commentNumber}`
+    )
+    return res.data
   }
 }

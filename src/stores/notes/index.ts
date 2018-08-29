@@ -46,9 +46,9 @@ export default class NotesStore {
   public async addLatinNoteAsync() {
     try {
       const commentNumber = Math.floor(Math.random() * 500) + 1 // randomize comment number (1..500)
-      const response = await this.jsonPlaceHolderApi.getComment(commentNumber)
+      const comment = await this.jsonPlaceHolderApi.getComment(commentNumber)
 
-      this.addNoteToArray(response.data.name, getRandomColor())
+      this.addNoteToArray(comment.name, getRandomColor())
     } catch (error) {
       this.addNoteToArray('Error fetching note from web', {
         r: 250,
