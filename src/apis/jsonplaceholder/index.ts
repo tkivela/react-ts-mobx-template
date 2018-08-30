@@ -9,7 +9,7 @@ interface IJsonPlaceHolderGetCommentResponse {
 
 export interface IJsonPlaceHolderApi {
   getCommentRest: IRestStore<IJsonPlaceHolderGetCommentResponse>
-  getComment: (commentNumber: number) => Promise<IJsonPlaceHolderGetCommentResponse>
+  getComment: (commentNumber: number) => Promise<IJsonPlaceHolderGetCommentResponse | null>
 }
 
 export default class JsonPlaceHolderApi implements IJsonPlaceHolderApi {
@@ -19,10 +19,14 @@ export default class JsonPlaceHolderApi implements IJsonPlaceHolderApi {
 
   public getComment = async (
     commentNumber: number
-  ): Promise<IJsonPlaceHolderGetCommentResponse> => {
-    const res = await this.getCommentRest.get(
-      `https://jsonplaceholder.typicode.com/comments/${commentNumber}`
-    )
-    return res.data
+  ): Promise<IJsonPlaceHolderGetCommentResponse | null> => {
+    try {
+      const res = await this.getCommentRest.get(
+        `https://jsonplaceholder.typicode.com/comments/${commentNumber}`
+      )
+      return res.data
+    } catch (error) {
+      return null
+    }
   }
 }

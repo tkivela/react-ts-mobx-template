@@ -15,7 +15,7 @@ export default class MockRestStore<T> implements IRestStore<T> {
   constructor() {
     const httpMethodMock = jest.fn()
     httpMethodMock.mockImplementation(() => {
-      throw new Error('Mock called more times test defined responses')
+      throw new Error('Error: Mock called more times than test defined responses.')
     })
     this.del = httpMethodMock
     this.get = httpMethodMock
