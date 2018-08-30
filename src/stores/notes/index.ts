@@ -54,14 +54,21 @@ export default class NotesStore {
       const comment = await this.jsonPlaceHolderApi.getComment(commentNumber)
       if (comment) {
         this.addNoteToArray(comment.name, getRandomColor())
+      } else {
+        this.addErrorNote()
       }
     } catch (error) {
-      this.addNoteToArray('Error fetching note from web', {
-        r: 250,
-        g: 0,
-        b: 0
-      })
+      this.addErrorNote()
     }
+  }
+
+  @action
+  public async addErrorNote() {
+    this.addNoteToArray('Error fetching note from web', {
+      r: 250,
+      g: 0,
+      b: 0
+    })
   }
 
   @action
