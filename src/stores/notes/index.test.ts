@@ -1,4 +1,4 @@
-import { setMockRestStoreOkStatus } from '../rest/mock'
+import { setMockRestStoreErrorStatus, setMockRestStoreOkStatus } from '../rest/mock'
 import NotesStore from './index'
 
 describe('NotesStore', () => {
@@ -66,5 +66,24 @@ describe('NotesStore', () => {
     expect(jsonPlaceHolderApi.getCommentRest.get).toHaveBeenCalledWith(
       'https://jsonplaceholder.typicode.com/comments/52'
     )
+  })
+
+  it('addLatinNoteAsync creates an error note incase api call fails', async () => {
+    const jsonPlaceHolderApi = store.jsonPlaceHolderApi
+    // #region Init mock api call results
+    const restEndpoint = jsonPlaceHolderApi.getCommentRest.get as jest.Mock
+    const apiResponseData = {
+      error: 'Some error occured here in our server'
+    }
+    restEndpoint.mockImplementationOnce(() => {
+      return setMockRestStoreErrorStatus(jsonPlaceHolderApi.getCommentRest, apiResponseData, 500)
+    })
+    // #endregion
+
+    await store.addLatinNoteNumberAsync(52)
+    expect(jsonPlaceHolderApi.getCommentRest.get).toHaveBeenCalledTimes(1)
+    expect(store.notes.length).toEqual(1)
+    expect(store.notes[0].title).toEqual('Error fetching note from web')
+    expect(store.counter).toEqual(0)
   })
 })

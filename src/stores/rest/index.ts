@@ -111,14 +111,16 @@ export default class RestStore<T> implements IRestStore<T> {
     this.response = res
     this.data = res.data as T
     this.status = ApiStatus.SUCCESS
+    this.error = undefined
     return res
   }
 
   @action.bound
   private handleError(error) {
-    this.error = error
-    this.status = ApiStatus.ERROR
+    this.response = error
     this.data = undefined
+    this.status = ApiStatus.ERROR
+    this.error = error
     throw error
   }
 }
