@@ -14,7 +14,7 @@ export interface IRestStore<T> {
   status: ApiStatus
   response?: AxiosResponse
   error: any
-  data: T
+  data: T | undefined
   del(url: string): Promise<AxiosResponse>
   get(url: string): Promise<AxiosResponse>
   patch(url: string, body: any): Promise<AxiosResponse>
@@ -29,7 +29,7 @@ export default class RestStore<T> implements IRestStore<T> {
   @observable
   public error: any
   @observable
-  public data: T
+  public data: T | undefined
 
   @action
   public async del(url: string): Promise<any> {
@@ -118,7 +118,7 @@ export default class RestStore<T> implements IRestStore<T> {
   private handleError(error) {
     this.error = error
     this.status = ApiStatus.ERROR
-    delete this.data
+    this.data = undefined
     throw error
   }
 }

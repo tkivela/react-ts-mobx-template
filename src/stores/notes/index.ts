@@ -52,11 +52,7 @@ export default class NotesStore {
   public async addLatinNoteNumberAsync(commentNumber: number) {
     try {
       const comment = await this.jsonPlaceHolderApi.getComment(commentNumber)
-      if (comment) {
-        this.addNoteToArray(comment.name, getRandomColor())
-      } else {
-        this.addErrorNote()
-      }
+      this.addNoteToArray(comment.name, getRandomColor())
     } catch (error) {
       this.addErrorNote()
     }
