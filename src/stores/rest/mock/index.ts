@@ -42,7 +42,9 @@ export const errorResponse = (status: number, data: any): AxiosResponse<any> => 
 
 export const setMockRestStoreOkStatus = (restStore: IRestStore<any>, data: any) => {
   restStore.status = ApiStatus.SUCCESS
+  restStore.error = undefined
   restStore.data = data
+  restStore.response = okResponse(data)
   return okResponse(data)
 }
 
@@ -52,6 +54,8 @@ export const setMockRestStoreErrorStatus = (
   status: number
 ) => {
   restStore.status = ApiStatus.ERROR
-  delete restStore.data
-  return errorResponse(status, data)
+  restStore.error = data
+  restStore.data = undefined
+  restStore.response = errorResponse(status, data)
+  throw Error('Error occured in api')
 }
