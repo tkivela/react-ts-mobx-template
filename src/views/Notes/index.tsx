@@ -11,12 +11,10 @@ interface INotesProps {
 
 @inject('notesStore')
 @observer
-class Notes extends React.Component<INotesProps> {
+export default class Notes extends React.Component<INotesProps> {
   public render() {
     return this.props.notesStore!.notes.map((note) => (
       <Note key={note.id} text={note.title} color={note.color} />
     ))
   }
 }
-
-export default Notes
