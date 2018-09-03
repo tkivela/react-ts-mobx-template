@@ -76,7 +76,7 @@ describe('NotesStore', () => {
       error: 'Some error occured here in our server'
     }
     restEndpoint.mockImplementationOnce(() => {
-      return setMockRestStoreErrorStatus(jsonPlaceHolderApi.getCommentRest, apiResponseData, 500)
+      return setMockRestStoreErrorStatus(apiResponseData, 500)
     })
     // #endregion
 

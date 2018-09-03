@@ -54,6 +54,7 @@ export default class NotesStore {
       const comment = await this.jsonPlaceHolderApi.getComment(commentNumber)
       this.addNoteToArray(comment.name, getRandomColor())
     } catch (error) {
+      // Here we could handle for example specific error codes from error.response.status
       this.addErrorNote()
     }
   }

@@ -1,20 +1,9 @@
 import Axios, { AxiosResponse } from 'axios'
-import { action, observable } from 'mobx'
+import { action } from 'mobx'
 
 import MockRestStore from './mock'
 
-export enum ApiStatus {
-  INITIALIZED = 'initalized',
-  INPROGRESS = 'in-progress',
-  SUCCESS = 'success',
-  ERROR = 'error'
-}
-
 export interface IRestStore<T> {
-  status: ApiStatus
-  response?: AxiosResponse
-  error: any
-  data: T | undefined
   del(url: string): Promise<AxiosResponse>
   get(url: string): Promise<AxiosResponse>
   patch(url: string, body: any): Promise<AxiosResponse>
@@ -22,106 +11,24 @@ export interface IRestStore<T> {
 }
 
 export default class RestStore<T> implements IRestStore<T> {
-  @observable
-  public status: ApiStatus = ApiStatus.INITIALIZED
-  @observable
-  public response?: AxiosResponse
-  @observable
-  public error: any
-  @observable
-  public data: T | undefined
-
   @action
   public async del(url: string): Promise<any> {
-    this.startNewRestQuery()
-    try {
-      return Axios.delete(url)
-        .then((res) => {
-          this.handleSuccess(res)
-          return res
-        })
-        .catch((error) => {
-          this.handleError(error)
-        })
-    } catch (error) {
-      this.handleError(error)
-    }
+    return Axios.delete(url)
   }
 
   @action
   public async get(url: string): Promise<any> {
-    this.startNewRestQuery()
-    try {
-      return Axios.get(url)
-        .then((res) => {
-          this.handleSuccess(res)
-          return res
-        })
-        .catch((error) => {
-          this.handleError(error)
-        })
-    } catch (error) {
-      this.handleError(error)
-    }
+    return Axios.get(url)
   }
 
   @action
   public async patch(url: string, body: any): Promise<any> {
-    this.startNewRestQuery()
-    try {
-      return Axios.patch(url, body)
-        .then((res) => {
-          this.handleSuccess(res)
-          return res
-        })
-        .catch((error) => {
-          this.handleError(error)
-        })
-    } catch (error) {
-      this.handleError(error)
-    }
+    return Axios.patch(url, body)
   }
 
   @action
   public async post(url: string, body: any): Promise<any> {
-    this.startNewRestQuery()
-    try {
-      return Axios.post(url, body)
-        .then((res) => {
-          this.handleSuccess(res)
-          return res
-        })
-        .catch((error) => {
-          this.handleError(error)
-        })
-    } catch (error) {
-      this.handleError(error)
-    }
-  }
-
-  @action.bound
-  private startNewRestQuery() {
-    this.status = ApiStatus.INPROGRESS
-    this.response = undefined
-    this.error = undefined
-  }
-
-  @action.bound
-  private handleSuccess(res) {
-    this.response = res
-    this.data = res.data as T
-    this.status = ApiStatus.SUCCESS
-    this.error = undefined
-    return res
-  }
-
-  @action.bound
-  private handleError(error) {
-    this.response = error
-    this.data = undefined
-    this.status = ApiStatus.ERROR
-    this.error = error
-    throw error
+    return Axios.post(url, body)
   }
 }
 

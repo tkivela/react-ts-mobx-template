@@ -1,12 +1,8 @@
 import { AxiosResponse } from 'axios'
 
-import { ApiStatus, IRestStore } from '../'
+import { IRestStore } from '../'
 
 export default class MockRestStore<T> implements IRestStore<T> {
-  public status: ApiStatus = ApiStatus.INITIALIZED
-  public response?: AxiosResponse
-  public error: any
-  public data: T
   public del: () => any
   public get: () => any
   public patch: () => any
@@ -32,30 +28,16 @@ export const okResponse = (data: any): AxiosResponse<any> => ({
   config: {}
 })
 
-export const errorResponse = (status: number, data: any): AxiosResponse<any> => ({
-  data,
-  status,
-  statusText: 'Error occured',
-  headers: {},
-  config: {}
-})
-
 export const setMockRestStoreOkStatus = (restStore: IRestStore<any>, data: any) => {
-  restStore.status = ApiStatus.SUCCESS
-  restStore.error = undefined
-  restStore.data = data
-  restStore.response = okResponse(data)
   return okResponse(data)
 }
 
-export const setMockRestStoreErrorStatus = (
-  restStore: IRestStore<any>,
-  data: any,
-  status: number
-) => {
-  restStore.status = ApiStatus.ERROR
-  restStore.error = data
-  restStore.data = undefined
-  restStore.response = errorResponse(status, data)
-  throw Error('Error occured in api')
+export const setMockRestStoreErrorStatus = (data: any, status: number) => {
+  throw {
+    data,
+    status,
+    statusText: 'Error occured',
+    headers: {},
+    config: {}
+  }
 }
