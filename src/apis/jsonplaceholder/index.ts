@@ -9,14 +9,12 @@ interface IJsonPlaceHolderGetCommentResponse {
 }
 
 export interface IJsonPlaceHolderApi {
-  getCommentRest: IHttpClient<IJsonPlaceHolderGetCommentResponse>
+  getCommentRest: IHttpClient
   getComment: (commentNumber: number) => Promise<IJsonPlaceHolderGetCommentResponse>
 }
 
 export default class JsonPlaceHolderApi implements IJsonPlaceHolderApi {
-  public getCommentRest: IHttpClient<IJsonPlaceHolderGetCommentResponse> = HttpClientFactory<
-    IJsonPlaceHolderGetCommentResponse
-  >()
+  public getCommentRest: IHttpClient = HttpClientFactory()
 
   public getComment = async (
     commentNumber: number

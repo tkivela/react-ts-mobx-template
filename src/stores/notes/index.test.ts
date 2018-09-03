@@ -36,7 +36,7 @@ describe('NotesStore', () => {
       body: 'itaque occaecati non aspernatu'
     }
     restEndpoint.mockImplementationOnce(() => {
-      return setMockHttpClientOkStatus(jsonPlaceHolderApi.getCommentRest, apiResponseData)
+      return setMockHttpClientOkStatus(apiResponseData)
     })
 
     const apiResponseData2 = {
@@ -47,7 +47,7 @@ describe('NotesStore', () => {
       body: 'Nosferatu'
     }
     restEndpoint.mockImplementationOnce(() => {
-      return setMockHttpClientOkStatus(jsonPlaceHolderApi.getCommentRest, apiResponseData2)
+      return setMockHttpClientOkStatus(apiResponseData2)
     })
 
     // #endregion

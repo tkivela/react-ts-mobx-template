@@ -2,14 +2,14 @@ import Axios, { AxiosResponse } from 'axios'
 
 import MockHttpClient from './mock'
 
-export interface IHttpClient<T> {
+export interface IHttpClient {
   del(url: string): Promise<AxiosResponse>
   get(url: string): Promise<AxiosResponse>
   patch(url: string, body: any): Promise<AxiosResponse>
   post(url: string, body: any): Promise<AxiosResponse>
 }
 
-export default class HttpClient<T> implements IHttpClient<T> {
+export default class HttpClient implements IHttpClient {
   public async del(url: string): Promise<any> {
     return Axios.delete(url)
   }
@@ -27,10 +27,10 @@ export default class HttpClient<T> implements IHttpClient<T> {
   }
 }
 
-export const HttpClientFactory = <T>() => {
+export const HttpClientFactory = () => {
   if (process.env && process.env.NODE_ENV && process.env.NODE_ENV === 'test') {
-    return new MockHttpClient<T>()
+    return new MockHttpClient()
   } else {
-    return new HttpClient<T>()
+    return new HttpClient()
   }
 }

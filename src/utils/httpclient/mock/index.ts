@@ -2,7 +2,7 @@ import { AxiosResponse } from 'axios'
 
 import { IHttpClient } from '../'
 
-export default class MockHttpClient<T> implements IHttpClient<T> {
+export default class MockHttpClient implements IHttpClient {
   public del: () => any
   public get: () => any
   public patch: () => any
@@ -28,7 +28,7 @@ export const okResponse = (data: any): AxiosResponse<any> => ({
   config: {}
 })
 
-export const setMockHttpClientOkStatus = (restStore: IHttpClient<any>, data: any) => {
+export const setMockHttpClientOkStatus = (data: any) => {
   return okResponse(data)
 }
 
