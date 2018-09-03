@@ -1,8 +1,8 @@
 import { AxiosResponse } from 'axios'
 
-import { IRestStore } from '../'
+import { IHttpClient } from '../'
 
-export default class MockRestStore<T> implements IRestStore<T> {
+export default class MockHttpClient<T> implements IHttpClient<T> {
   public del: () => any
   public get: () => any
   public patch: () => any
@@ -28,11 +28,11 @@ export const okResponse = (data: any): AxiosResponse<any> => ({
   config: {}
 })
 
-export const setMockRestStoreOkStatus = (restStore: IRestStore<any>, data: any) => {
+export const setMockHttpClientOkStatus = (restStore: IHttpClient<any>, data: any) => {
   return okResponse(data)
 }
 
-export const setMockRestStoreErrorStatus = (data: any, status: number) => {
+export const setMockHttpClientErrorStatus = (data: any, status: number) => {
   throw {
     data,
     status,

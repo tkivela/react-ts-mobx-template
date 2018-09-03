@@ -1,4 +1,5 @@
-import { IRestStore, RestStoreFactory } from '../../stores/rest'
+import { HttpClientFactory, IHttpClient } from '../../utils/httpclient'
+
 interface IJsonPlaceHolderGetCommentResponse {
   postId: number
   id: number
@@ -8,12 +9,12 @@ interface IJsonPlaceHolderGetCommentResponse {
 }
 
 export interface IJsonPlaceHolderApi {
-  getCommentRest: IRestStore<IJsonPlaceHolderGetCommentResponse>
+  getCommentRest: IHttpClient<IJsonPlaceHolderGetCommentResponse>
   getComment: (commentNumber: number) => Promise<IJsonPlaceHolderGetCommentResponse>
 }
 
 export default class JsonPlaceHolderApi implements IJsonPlaceHolderApi {
-  public getCommentRest: IRestStore<IJsonPlaceHolderGetCommentResponse> = RestStoreFactory<
+  public getCommentRest: IHttpClient<IJsonPlaceHolderGetCommentResponse> = HttpClientFactory<
     IJsonPlaceHolderGetCommentResponse
   >()
 

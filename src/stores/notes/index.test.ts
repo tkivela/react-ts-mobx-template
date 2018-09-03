@@ -1,4 +1,7 @@
-import { setMockRestStoreErrorStatus, setMockRestStoreOkStatus } from '../rest/mock'
+import {
+  setMockHttpClientErrorStatus,
+  setMockHttpClientOkStatus
+} from '../../utils/httpclient/mock'
 import NotesStore from './index'
 
 describe('NotesStore', () => {
@@ -33,7 +36,7 @@ describe('NotesStore', () => {
       body: 'itaque occaecati non aspernatu'
     }
     restEndpoint.mockImplementationOnce(() => {
-      return setMockRestStoreOkStatus(jsonPlaceHolderApi.getCommentRest, apiResponseData)
+      return setMockHttpClientOkStatus(jsonPlaceHolderApi.getCommentRest, apiResponseData)
     })
 
     const apiResponseData2 = {
@@ -44,7 +47,7 @@ describe('NotesStore', () => {
       body: 'Nosferatu'
     }
     restEndpoint.mockImplementationOnce(() => {
-      return setMockRestStoreOkStatus(jsonPlaceHolderApi.getCommentRest, apiResponseData2)
+      return setMockHttpClientOkStatus(jsonPlaceHolderApi.getCommentRest, apiResponseData2)
     })
 
     // #endregion
@@ -76,7 +79,7 @@ describe('NotesStore', () => {
       error: 'Some error occured here in our server'
     }
     restEndpoint.mockImplementationOnce(() => {
-      return setMockRestStoreErrorStatus(apiResponseData, 500)
+      return setMockHttpClientErrorStatus(apiResponseData, 500)
     })
     // #endregion
 

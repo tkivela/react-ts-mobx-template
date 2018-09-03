@@ -1,41 +1,36 @@
 import Axios, { AxiosResponse } from 'axios'
-import { action } from 'mobx'
 
-import MockRestStore from './mock'
+import MockHttpClient from './mock'
 
-export interface IRestStore<T> {
+export interface IHttpClient<T> {
   del(url: string): Promise<AxiosResponse>
   get(url: string): Promise<AxiosResponse>
   patch(url: string, body: any): Promise<AxiosResponse>
   post(url: string, body: any): Promise<AxiosResponse>
 }
 
-export default class RestStore<T> implements IRestStore<T> {
-  @action
+export default class HttpClient<T> implements IHttpClient<T> {
   public async del(url: string): Promise<any> {
     return Axios.delete(url)
   }
 
-  @action
   public async get(url: string): Promise<any> {
     return Axios.get(url)
   }
 
-  @action
   public async patch(url: string, body: any): Promise<any> {
     return Axios.patch(url, body)
   }
 
-  @action
   public async post(url: string, body: any): Promise<any> {
     return Axios.post(url, body)
   }
 }
 
-export const RestStoreFactory = <T>() => {
+export const HttpClientFactory = <T>() => {
   if (process.env && process.env.NODE_ENV && process.env.NODE_ENV === 'test') {
-    return new MockRestStore<T>()
+    return new MockHttpClient<T>()
   } else {
-    return new RestStore<T>()
+    return new HttpClient<T>()
   }
 }
