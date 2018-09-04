@@ -8,6 +8,12 @@ interface INoteColor {
   b: number
 }
 
+export interface INote {
+  id: string
+  title: string
+  color: INoteColor
+}
+
 const getRandomColor = (): INoteColor => {
   const color = Math.floor(Math.random() * 100) + 140
 
@@ -27,7 +33,7 @@ export default class NotesStore {
   @observable
   public counter = 0
   @observable
-  public notes: Array<{ id: string; title: string; color: INoteColor }> = []
+  public notes: INote[] = []
   @observable
   public jsonPlaceHolderApi: IJsonPlaceHolderApi = new JsonPlaceHolderApi()
 

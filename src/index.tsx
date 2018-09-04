@@ -3,7 +3,7 @@ import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 
 import registerServiceWorker from './registerServiceWorker'
-import Root from './views/Root'
+import Root from './Root'
 
 configure({ enforceActions: 'observed' })
 

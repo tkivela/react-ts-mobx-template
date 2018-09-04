@@ -1,11 +1,10 @@
 import { css } from 'emotion'
-import { inject, observer } from 'mobx-react'
+import { observer } from 'mobx-react'
 import * as React from 'react'
 
 import { Link } from '@reach/router'
 
 import CustomButton, { blueButton, orangeButton } from '../../components/CustomButton'
-import { NotesStore } from '../../stores'
 import logo from './logo.svg'
 
 const appStyles = css`
@@ -35,10 +34,10 @@ const appStyles = css`
 `
 
 interface IAppProps {
-  notesStore?: NotesStore
+  addLatinNoteHandler: () => void
+  addCounterNoteHandler: () => void
 }
 
-@inject('notesStore')
 @observer
 export default class extends React.Component<IAppProps> {
   public render() {
@@ -55,13 +54,13 @@ export default class extends React.Component<IAppProps> {
               title="Add a latin note"
               colors={blueButton}
               onClickHandler={() => {
-                this.props.notesStore!.addLatinNoteAsync()
+                this.props.addLatinNoteHandler()
               }}
             />
             <CustomButton
               title="Add a counter note"
               onClickHandler={() => {
-                this.props.notesStore!.addCounterNote()
+                this.props.addCounterNoteHandler()
               }}
               colors={orangeButton}
             />

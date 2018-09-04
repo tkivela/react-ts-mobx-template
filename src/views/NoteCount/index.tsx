@@ -1,8 +1,6 @@
 import { css } from 'emotion'
-import { inject, observer } from 'mobx-react'
+import { observer } from 'mobx-react'
 import * as React from 'react'
-
-import { NotesStore } from '../../stores'
 
 const noteCountStyles = css`
   font-family: sans-serif;
@@ -11,16 +9,15 @@ const noteCountStyles = css`
 
 interface INoteCountProps {
   path?: string
-  notesStore?: NotesStore
+  notescount: number
 }
 
-@inject('notesStore')
 @observer
-export default class extends React.Component<INoteCountProps, any> {
+export default class extends React.Component<INoteCountProps> {
   public render() {
     return (
       <div className={noteCountStyles}>
-        <h1>You have created {this.props.notesStore!.notescount} notes.</h1>
+        <h1>You have created {this.props.notescount} notes.</h1>
       </div>
     )
   }
