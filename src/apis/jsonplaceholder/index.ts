@@ -8,18 +8,13 @@ interface IJsonPlaceHolderGetCommentResponse {
   body: string
 }
 
-export interface IJsonPlaceHolderApi {
-  getCommentRest: IHttpClient
-  getComment: (commentNumber: number) => Promise<IJsonPlaceHolderGetCommentResponse>
-}
+export default class JsonPlaceHolderApi {
+  public static getCommentRest: IHttpClient = HttpClientFactory()
 
-export default class JsonPlaceHolderApi implements IJsonPlaceHolderApi {
-  public getCommentRest: IHttpClient = HttpClientFactory()
-
-  public getComment = async (
+  public static getComment = async (
     commentNumber: number
   ): Promise<IJsonPlaceHolderGetCommentResponse> => {
-    const res = await this.getCommentRest.get(
+    const res = await JsonPlaceHolderApi.getCommentRest.get(
       `https://jsonplaceholder.typicode.com/comments/${commentNumber}`
     )
     return res.data

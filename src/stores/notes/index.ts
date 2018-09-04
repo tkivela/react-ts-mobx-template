@@ -1,6 +1,6 @@
 import { action, computed, observable } from 'mobx'
 
-import JsonPlaceHolderApi, { IJsonPlaceHolderApi } from '../../apis/jsonplaceholder'
+import JsonPlaceHolderApi from '../../apis/jsonplaceholder'
 
 interface INoteColor {
   r: number
@@ -31,11 +31,9 @@ const getRandomColor = (): INoteColor => {
 
 export default class NotesStore {
   @observable
-  public counter = 0
+  public counter: number = 0
   @observable
   public notes: INote[] = []
-  @observable
-  public jsonPlaceHolderApi: IJsonPlaceHolderApi = new JsonPlaceHolderApi()
 
   @computed
   get notescount() {
@@ -57,7 +55,7 @@ export default class NotesStore {
   @action
   public async addLatinNoteNumberAsync(commentNumber: number) {
     try {
-      const comment = await this.jsonPlaceHolderApi.getComment(commentNumber)
+      const comment = await JsonPlaceHolderApi.getComment(commentNumber)
       this.addNoteToArray(comment.name, getRandomColor())
     } catch (error) {
       // Here we could handle for example specific error codes from error.response.status
