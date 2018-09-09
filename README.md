@@ -6,7 +6,6 @@ Details:
 * State management with [MobX](https://mobx.js.org/)
 * CSS in JS with [Emotion](https://emotion.sh/)
 * HTTP requests with [Axios](https://github.com/axios/axios)
-* Routing with [Reach Router](https://reach.tech/router)
 * Linting with [TSLint](https://github.com/palantir/tslint)
 * Code formatting with [Prettier](https://prettier.io/)
 * Testing with [Jest](https://facebook.github.io/jest/)
@@ -27,8 +26,6 @@ Starts your project and opens it automatically in browser.
 
 ### `yarn test`
 
-* Formats code (with Prettier)
-* Runs code linting & fixes lint problems if it can (with TSLint)
 * Runs unit tests (with Jest) .
 
 ### `yarn build`
@@ -38,22 +35,24 @@ The build is minified and the filenames include the hashes.<br>
 
 ### Directory structure
 
+* *apis* directory contains code for external api interactions.
 * *components* directory contains reusable components.
 * *stores* directory contains MobX store definitions.
 * *views* directory contains views which are routed to different urls.
 
 ```
 └── src
+    ├── apis
     ├── components
     │   ├── CustomButton
     │   ├── Note
-    │   ├── Notes
     │   └── TopNavigation
     ├── stores
-    │   └── app
+    │   └── notes
     └── views
         ├── App
-        └── NoteCount
+        ├── NoteCount
+        └── Notes
 ```
 
 ### Example project features
@@ -66,7 +65,7 @@ The project contains simple application to demonstrate following features:
 * Calling an API with async action and updating results to MobX store
 * Linting & Formatting
 * Testing actions & store with Jest unit tests
-* Routing components to different urls while sharing the same MobX stores
+* Testing automatically mocked external api with Jest unit tests
 * Styling components with CSS-in-JS (Emotion)
 * Including devtools (mobx-react-devtools)
 * Including decorator features to CRA based setup (with react-app-rewired)
