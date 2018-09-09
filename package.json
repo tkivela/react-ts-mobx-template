@@ -10,7 +10,6 @@
     "format": "prettier --write 'src/**/*.ts*'"
   },
   "dependencies": {
-    "@reach/router": "1.1.1",
     "axios": "0.18.0",
     "emotion": "9.2.8",
     "mobx": "5.1.0",

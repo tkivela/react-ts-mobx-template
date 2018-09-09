@@ -2,9 +2,7 @@ import { css } from 'emotion'
 import { observer } from 'mobx-react'
 import * as React from 'react'
 
-import { Link } from '@reach/router'
-
-import CustomButton, { blueButton, orangeButton } from '../../components/CustomButton'
+import CustomButton, { blueButton, darkButton, orangeButton } from '../../components/CustomButton'
 import logo from './logo.svg'
 
 const appStyles = css`
@@ -36,6 +34,8 @@ const appStyles = css`
 interface IAppProps {
   addLatinNoteHandler: () => void
   addCounterNoteHandler: () => void
+  notesPageButtonHandler: () => void
+  noteCountsPageButtonHandler: () => void
 }
 
 @observer
@@ -43,9 +43,20 @@ export default class extends React.Component<IAppProps> {
   public render() {
     return (
       <div className={appStyles}>
-        <Link to="/">Notes page</Link>
-        <p />
-        <Link to="/notecount">Counts page</Link>
+        <CustomButton
+          title="Notes page"
+          colors={darkButton}
+          onClickHandler={() => {
+            this.props.notesPageButtonHandler()
+          }}
+        />
+        <CustomButton
+          title="Counts page"
+          colors={darkButton}
+          onClickHandler={() => {
+            this.props.noteCountsPageButtonHandler()
+          }}
+        />
         <p />
         <header>
           <img src={logo} alt="logo" />

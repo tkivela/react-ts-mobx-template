@@ -20,6 +20,12 @@ export const orangeButton: IButtonColors = {
   hoverBackgroundColor: '#FF983C'
 }
 
+export const darkButton: IButtonColors = {
+  backgroundColor: '#50573b;',
+  boxShadow: '#6e09cd',
+  hoverBackgroundColor: '#853cff'
+}
+
 const buttonStyle = (props) => css`
   body {
     font-family: 'sans-serif';
