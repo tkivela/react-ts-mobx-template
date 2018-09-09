@@ -14,7 +14,6 @@
     "emotion": "9.2.8",
     "mobx": "5.1.0",
     "mobx-react": "5.2.6",
-    "mobx-react-devtools": "6.0.3",
     "react": "16.5.0",
     "react-dom": "16.5.0",
     "react-scripts-ts": "2.17.0"
@@ -27,6 +26,7 @@
     "babel": "6.23.0",
     "babel-plugin-transform-decorators": "6.24.1",
     "babel-preset-mobx": "1.0.3",
+    "mobx-react-devtools": "6.0.3",
     "prettier": "1.14.2",
     "react-app-rewire-mobx": "1.0.8",
     "react-app-rewired": "1.6.2",
