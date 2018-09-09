@@ -9,7 +9,7 @@ import Notes from '../Notes'
 
 const { Fragment } = React
 const DevTools =
-  process.env.NODE_ENV !== 'development' ? require('mobx-react-devtools').default : Fragment
+  process.env.NODE_ENV === 'development' ? require('mobx-react-devtools').default : Fragment
 
 interface IAppProps {
   notesStore?: NotesStore
