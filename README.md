@@ -1,11 +1,11 @@
 # react-ts-mobx-app
 
-a project with React, MobX, Emotion and TypeScript
+a template project with React, MobX, Emotion and TypeScript + Unit testing.
 
 Details:
 * State management with [MobX](https://mobx.js.org/)
 * CSS in JS with [Emotion](https://emotion.sh/)
-* HTTP requests with [Axios](https://github.com/axios/axios)
+* HTTP requests with [Wretch](https://github.com/elbywan/wretch)
 * Linting with [TSLint](https://github.com/palantir/tslint)
 * Code formatting with [Prettier](https://prettier.io/)
 * Testing with [Jest](https://facebook.github.io/jest/)
@@ -67,5 +67,5 @@ The project contains simple application to demonstrate following features:
 * Testing actions & store with Jest unit tests
 * Testing automatically mocked external api with Jest unit tests
 * Styling components with CSS-in-JS (Emotion)
-* Including devtools (mobx-react-devtools)
+* Including devtools in development environment builds (mobx-react-devtools)
 * Including decorator features to CRA based setup (with react-app-rewired)

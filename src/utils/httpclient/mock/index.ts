@@ -1,5 +1,3 @@
-import { AxiosResponse } from 'axios'
-
 import { IHttpClient } from '../'
 
 export default class MockHttpClient implements IHttpClient {
@@ -20,24 +18,19 @@ export default class MockHttpClient implements IHttpClient {
   }
 }
 
-export const okResponse = (data: any): AxiosResponse<any> => ({
-  data,
-  status: 200,
-  statusText: 'Ok',
-  headers: {},
-  config: {}
-})
-
 export const setMockHttpClientOkStatus = (data: any) => {
-  return okResponse(data)
+  return data
 }
 
 export const setMockHttpClientErrorStatus = (data: any, status: number) => {
   throw {
-    data,
+    message: data,
+    response: {
+      ok: false,
+      status,
+      statusText: data
+    },
     status,
-    statusText: 'Error occured',
-    headers: {},
-    config: {}
+    text: data
   }
 }

@@ -1,29 +1,37 @@
-import Axios, { AxiosResponse } from 'axios'
+import wretch from 'wretch'
 
 import MockHttpClient from './mock'
 
 export interface IHttpClient {
-  del(url: string): Promise<AxiosResponse>
-  get(url: string): Promise<AxiosResponse>
-  patch(url: string, body: any): Promise<AxiosResponse>
-  post(url: string, body: any): Promise<AxiosResponse>
+  del(url: string): Promise<any>
+  get(url: string): Promise<any>
+  patch(url: string, body: any): Promise<any>
+  post(url: string, body: any): Promise<any>
 }
 
 export default class HttpClient implements IHttpClient {
   public async del(url: string): Promise<any> {
-    return Axios.delete(url)
+    return wretch(url)
+      .delete()
+      .json()
   }
 
   public async get(url: string): Promise<any> {
-    return Axios.get(url)
+    return wretch(url)
+      .get()
+      .json()
   }
 
   public async patch(url: string, body: any): Promise<any> {
-    return Axios.patch(url, body)
+    return wretch(url)
+      .patch(body)
+      .json()
   }
 
   public async post(url: string, body: any): Promise<any> {
-    return Axios.post(url, body)
+    return wretch(url)
+      .post(body)
+      .json()
   }
 }
 

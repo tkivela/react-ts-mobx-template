@@ -14,9 +14,8 @@ export default class JsonPlaceHolderApi {
   public static getComment = async (
     commentNumber: number
   ): Promise<IJsonPlaceHolderGetCommentResponse> => {
-    const res = await JsonPlaceHolderApi.getCommentRest.get(
+    return JsonPlaceHolderApi.getCommentRest.get(
       `https://jsonplaceholder.typicode.com/comments/${commentNumber}`
     )
-    return res.data
   }
 }
