@@ -4712,6 +4712,10 @@ mobx-react@5.2.6:
     hoist-non-react-statics "^2.5.0"
     react-lifecycles-compat "^3.0.2"
 
+mobx-utils@^5.0.2:
+  version "5.0.2"
+  resolved "https://registry.npmjs.org/mobx-utils/-/mobx-utils-5.0.2.tgz#82325c66c86a4b0a9c161df08bd71ebca0f9c902"
+
 mobx@5.1.0:
   version "5.1.0"
   resolved "https://registry.npmjs.org/mobx/-/mobx-5.1.0.tgz#ae772ca8eb0c1dd93341ffce375f44a80050014d"

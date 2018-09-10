@@ -31,7 +31,17 @@ export default class extends React.Component<INoteProps> {
   public render() {
     return (
       <div className={noteStyle(this.props)}>
-        <h3>{this.props.note.title}</h3>
+        {this.props.note.content.state === 'pending' ? (
+          <h3>
+            <i>loading...</i>
+          </h3>
+        ) : null}
+
+        {this.props.note.content.state === 'fulfilled' ? (
+          <h3>{this.props.note.content.value.name}</h3>
+        ) : null}
+
+        {this.props.note.content.state === 'rejected' ? <h3>Error fetching the note</h3> : null}
       </div>
     )
   }

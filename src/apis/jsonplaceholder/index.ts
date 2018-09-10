@@ -1,6 +1,6 @@
 import { HttpClientFactory, IHttpClient } from '../../utils/httpclient'
 
-interface IJsonPlaceHolderGetCommentResponse {
+export interface IJsonPlaceHolderGetCommentResponse {
   postId: number
   id: number
   name: string

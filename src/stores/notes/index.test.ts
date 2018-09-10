@@ -1,3 +1,5 @@
+import { when } from 'mobx'
+
 import JsonPlaceHolderApi from '../../apis/jsonplaceholder'
 import { HttpClientFactory } from '../../utils/httpclient'
 import {
@@ -14,17 +16,34 @@ describe('NotesStore', () => {
     JsonPlaceHolderApi.getCommentRest = HttpClientFactory() // Reset rest endpoint so we get correct toHaveBeenCalledTimes
   })
 
-  it('addCounterNote should add new note to notes array beginning', () => {
+  it('addCounterNote should add new note to notes array beginning', async () => {
     expect(store.counter).toEqual(0)
     // expect(store.notes).toEqual([]) // Skip until https://github.com/facebook/jest/issues/6392 is resolved
     store.addCounterNote()
     expect(store.counter).toEqual(1)
     expect(store.notes.length).toEqual(1)
-    expect(store.notes[0].title).toEqual('Counter: 1')
+
     store.addCounterNote()
     expect(store.counter).toEqual(2)
     expect(store.notes.length).toEqual(2)
-    expect(store.notes[0].title).toEqual('Counter: 2')
+
+    when(
+      () =>
+        store.notes[0].content.state !== 'pending' && store.notes[1].content.state !== 'pending',
+      () => {
+        expect(store.notes[1].content.state).toEqual('fulfilled')
+        expect(store.notes[1].content.value.name).toEqual('Counter: 1')
+      }
+    )
+
+    when(
+      () =>
+        store.notes[0].content.state !== 'pending' && store.notes[1].content.state !== 'pending',
+      () => {
+        expect(store.notes[0].content.state).toEqual('fulfilled')
+        expect(store.notes[0].content.value.name).toEqual('Counter: 2')
+      }
+    )
   })
 
   it('addLatinNoteAsync should add new note to notes array beginning', async () => {
@@ -60,8 +79,6 @@ describe('NotesStore', () => {
     await store.addLatinNoteNumberAsync(52)
     expect(JsonPlaceHolderApi.getCommentRest.get).toHaveBeenCalledTimes(2)
     expect(store.notes.length).toEqual(2)
-    expect(store.notes[0].title).toEqual('quoa sade qui')
-    expect(store.notes[1].title).toEqual('animi minima ducimus tempore officiis qui')
     expect(store.counter).toEqual(0)
 
     expect(JsonPlaceHolderApi.getCommentRest.get).toHaveBeenCalledWith(
@@ -70,9 +87,23 @@ describe('NotesStore', () => {
     expect(JsonPlaceHolderApi.getCommentRest.get).toHaveBeenCalledWith(
       'https://jsonplaceholder.typicode.com/comments/52'
     )
+
+    when(
+      () =>
+        store.notes[0].content.state !== 'pending' && store.notes[1].content.state !== 'pending',
+      () => {
+        expect(store.notes[0].content.state).toEqual('fulfilled')
+        expect(store.notes[0].content.value.name).toEqual('quoa sade qui')
+
+        expect(store.notes[1].content.state).toEqual('fulfilled')
+        expect(store.notes[1].content.value.name).toEqual(
+          'animi minima ducimus tempore officiis qui'
+        )
+      }
+    )
   })
 
-  it('addLatinNoteAsync creates an error note incase api call fails', async () => {
+  it('addLatinNoteAsync creates an error note incase api call fails', async (done) => {
     // #region Init mock api call results
     const restEndpoint = JsonPlaceHolderApi.getCommentRest.get as jest.Mock
     const apiResponseData = {
@@ -86,7 +117,14 @@ describe('NotesStore', () => {
     await store.addLatinNoteNumberAsync(52)
     expect(JsonPlaceHolderApi.getCommentRest.get).toHaveBeenCalledTimes(1)
     expect(store.notes.length).toEqual(1)
-    expect(store.notes[0].title).toEqual('Error fetching note from web')
     expect(store.counter).toEqual(0)
+
+    when(
+      () => store.notes[0].content.state !== 'pending',
+      () => {
+        expect(store.notes[0].content.state).toEqual('rejected')
+        done()
+      }
+    )
   })
 })

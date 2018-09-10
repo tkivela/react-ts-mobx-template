@@ -1,6 +1,7 @@
 import { action, computed, observable } from 'mobx'
+import { fromPromise, IPromiseBasedObservable } from 'mobx-utils'
 
-import JsonPlaceHolderApi from '../../apis/jsonplaceholder'
+import JsonPlaceHolderApi, { IJsonPlaceHolderGetCommentResponse } from '../../apis/jsonplaceholder'
 
 interface INoteColor {
   r: number
@@ -10,8 +11,8 @@ interface INoteColor {
 
 export interface INote {
   id: string
-  title: string
   color: INoteColor
+  content: IPromiseBasedObservable<IJsonPlaceHolderGetCommentResponse>
 }
 
 const getRandomColor = (): INoteColor => {
@@ -42,8 +43,22 @@ export default class NotesStore {
 
   @action
   public addCounterNote() {
-    this.addBy(1)
-    this.addNoteToArray('Counter: ' + this.counter, getRandomColor())
+    this.counter += 1
+    const note = {
+      id: new Date().getTime().toString(),
+      color: getRandomColor(),
+      content: fromPromise<IJsonPlaceHolderGetCommentResponse>(
+        Promise.resolve({
+          postId: 1,
+          id: 1,
+          name: 'Counter: ' + this.counter,
+          email: 'foo',
+          body: 'foo'
+        })
+      )
+    }
+
+    this.addNoteToArray(note)
   }
 
   @action
@@ -53,33 +68,20 @@ export default class NotesStore {
   }
 
   @action
-  public async addLatinNoteNumberAsync(commentNumber: number) {
-    try {
-      const comment = await JsonPlaceHolderApi.getComment(commentNumber)
-      this.addNoteToArray(comment.name, getRandomColor())
-    } catch (error) {
-      // Here we could handle for example specific error codes from error.status
-      this.addErrorNote()
+  public async addLatinNoteNumberAsync(commentNumber: number): Promise<INote> {
+    const note: INote = {
+      id: new Date().getTime().toString(),
+      color: getRandomColor(),
+      content: fromPromise<IJsonPlaceHolderGetCommentResponse>(
+        JsonPlaceHolderApi.getComment(commentNumber)
+      )
     }
+    this.addNoteToArray(note)
+    return note
   }
 
   @action
-  public async addErrorNote() {
-    this.addNoteToArray('Error fetching note from web', {
-      r: 250,
-      g: 0,
-      b: 0
-    })
-  }
-
-  @action
-  private addBy(delta: number) {
-    this.counter += delta
-  }
-
-  @action
-  private addNoteToArray(title: string, color: INoteColor) {
-    const id = new Date().getTime().toString()
-    this.notes.unshift({ id, title, color })
+  private addNoteToArray(note: INote) {
+    this.notes.unshift(note)
   }
 }
