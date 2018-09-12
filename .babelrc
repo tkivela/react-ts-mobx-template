@@ -1,9 +1,6 @@
 {
   "presets": [
-    "mobx",
-    "react",
-    "es2015",
-    "stage-1"
+    "mobx"
   ],
   "plugins": [
     "transform-decorators",
