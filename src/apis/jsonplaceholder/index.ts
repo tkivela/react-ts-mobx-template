@@ -1,12 +1,8 @@
 import { HttpClientFactory, IHttpClient } from '../../utils/httpclient'
 
 export interface IJsonPlaceHolderGetCommentResponse {
-  postId: number
-  id: number
   name: string
-  email: string
-  body: string
-}
+} // jsonplaceholder response includes also other properties, but we'll declare only those that we need
 
 export default class JsonPlaceHolderApi {
   public static getCommentRest: IHttpClient = HttpClientFactory()

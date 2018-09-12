@@ -49,11 +49,7 @@ export default class NotesStore {
       color: getRandomColor(),
       content: fromPromise<IJsonPlaceHolderGetCommentResponse>(
         Promise.resolve({
-          postId: 1,
-          id: 1,
-          name: 'Counter: ' + this.counter,
-          email: 'foo',
-          body: 'foo'
+          name: 'Counter: ' + this.counter
         })
       )
     }
