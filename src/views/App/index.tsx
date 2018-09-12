@@ -7,10 +7,6 @@ import { VIEW } from '../../stores/view'
 import NoteCount from '../NoteCount'
 import Notes from '../Notes'
 
-const { Fragment } = React
-const DevTools =
-  process.env.NODE_ENV === 'development' ? require('mobx-react-devtools').default : Fragment
-
 interface IAppProps {
   notesStore?: NotesStore
   viewStore?: ViewStore
@@ -23,7 +19,6 @@ export default class App extends React.Component<IAppProps> {
   public render() {
     return (
       <div>
-        <DevTools />
         <TopNavigation
           addLatinNoteHandler={() => {
             this.props.notesStore!.addLatinNoteAsync()
