@@ -13,16 +13,16 @@
     "emotion": "9.2.8",
     "mobx": "5.1.0",
     "mobx-react": "5.2.8",
-    "mobx-utils": "^5.0.2",
+    "mobx-utils": "5.0.2",
     "react": "16.5.0",
     "react-dom": "16.5.0",
     "react-scripts-ts": "2.17.0",
-    "wretch": "^1.4.1"
+    "wretch": "1.4.1"
   },
   "devDependencies": {
     "@types/jest": "23.3.2",
     "@types/node": "10.9.4",
-    "@types/react": "16.4.13",
+    "@types/react": "16.4.14",
     "@types/react-dom": "16.0.7",
     "babel": "6.23.0",
     "babel-plugin-transform-decorators": "6.24.1",
