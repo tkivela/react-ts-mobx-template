@@ -10,7 +10,6 @@ const appStyles = css`
 
   header {
     background-color: #d4cfcf;
-    height: 80px;
     padding: 20px;
     color: white;
   }
