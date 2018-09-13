@@ -32,18 +32,16 @@ const buttonStyle = (props) => css`
   }
   display: inline;
 
-  .btn {
-    border-radius: 5px;
-    padding: 15px;
-    font-size: 22px;
-    margin: 10px;
-    color: #fff;
-    display: inline-block;
-    background-color: ${props.colors.backgroundColor};
-    box-shadow: 0px 5px 0px 0px ${props.colors.boxShadow};
-  }
+  border-radius: 5px;
+  padding: 15px;
+  font-size: 22px;
+  margin: 10px;
+  color: #fff;
+  display: inline-block;
+  background-color: ${props.colors.backgroundColor};
+  box-shadow: 0px 5px 0px 0px ${props.colors.boxShadow};
 
-  .btn:hover {
+  :hover {
     background-color: ${props.colors.hoverBackgroundColor};
   }
 `
@@ -59,7 +57,7 @@ export default class extends React.Component<ICustomButton> {
   public render() {
     return (
       <div className={buttonStyle(this.props)} onClick={this.props.onClickHandler}>
-        <div className="btn">{this.props.title}</div>
+        {this.props.title}
       </div>
     )
   }
