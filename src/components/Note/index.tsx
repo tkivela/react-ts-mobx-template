@@ -5,8 +5,7 @@ import * as React from 'react'
 import { INote } from '../../stores/notes'
 
 const noteStyle = (props) => css`
-  font-size: 1.17em;
-  font-weight: bold;
+  font-size: 1.25em;
 
   width: 20%;
   height: 160px;
