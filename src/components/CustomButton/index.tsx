@@ -30,8 +30,6 @@ const buttonStyle = (props) => css`
   body {
     font-family: 'sans-serif';
   }
-  display: inline;
-
   border-radius: 5px;
   padding: 15px;
   font-size: 22px;
@@ -39,7 +37,7 @@ const buttonStyle = (props) => css`
   color: #fff;
   display: inline-block;
   background-color: ${props.colors.backgroundColor};
-  box-shadow: 0px 5px 0px 0px ${props.colors.boxShadow};
+  box-shadow: 0px 2px 0px 0px ${props.colors.boxShadow};
 
   :hover {
     background-color: ${props.colors.hoverBackgroundColor};
@@ -56,9 +54,9 @@ interface ICustomButton {
 export default class extends React.Component<ICustomButton> {
   public render() {
     return (
-      <div className={buttonStyle(this.props)} onClick={this.props.onClickHandler}>
+      <button className={buttonStyle(this.props)} onClick={this.props.onClickHandler}>
         {this.props.title}
-      </div>
+      </button>
     )
   }
 }
