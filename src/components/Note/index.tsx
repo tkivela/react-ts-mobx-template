@@ -5,6 +5,9 @@ import * as React from 'react'
 import { INote } from '../../stores/notes'
 
 const noteStyle = (props) => css`
+  font-size: 1.17em;
+  font-weight: bold;
+
   width: 20%;
   height: 160px;
   float: left;
@@ -31,17 +34,13 @@ export default class extends React.Component<INoteProps> {
   public render() {
     return (
       <div className={noteStyle(this.props)}>
-        {this.props.note.content.state === 'pending' ? (
-          <h3>
-            <i>loading...</i>
-          </h3>
-        ) : null}
+        {this.props.note.content.state === 'pending' ? <i>loading...</i> : null}
 
         {this.props.note.content.state === 'fulfilled' ? (
-          <h3>{this.props.note.content.value.name}</h3>
+          <>{this.props.note.content.value.name}</>
         ) : null}
 
-        {this.props.note.content.state === 'rejected' ? <h3>Error fetching the note</h3> : null}
+        {this.props.note.content.state === 'rejected' ? <>Error fetching the note</> : null}
       </div>
     )
   }
