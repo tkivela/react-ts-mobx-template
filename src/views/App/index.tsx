@@ -18,7 +18,7 @@ interface IAppProps {
 export default class App extends React.Component<IAppProps> {
   public render() {
     return (
-      <div>
+      <>
         <TopNavigation
           addLatinNoteHandler={() => {
             this.props.notesStore!.addLatinNoteAsync()
@@ -34,7 +34,7 @@ export default class App extends React.Component<IAppProps> {
           }}
         />
         {this.renderView()}
-      </div>
+      </>
     )
   }
 
