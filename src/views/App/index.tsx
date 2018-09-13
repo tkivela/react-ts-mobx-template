@@ -43,7 +43,7 @@ export default class App extends React.Component<IAppProps> {
       case VIEW.NOTES:
         return <Notes notes={this.props.notesStore!.notes} />
       case VIEW.NOTECOUNT:
-        return <NoteCount notescount={this.props.notesStore!.notescount} />
+        return <NoteCount />
     }
   }
 }
