@@ -43,22 +43,20 @@ export default class extends React.Component<IAppProps> {
         />
         <p />
         <header>
-          <div>
-            <CustomButton
-              title="Add a latin note"
-              colors={blueButton}
-              onClickHandler={() => {
-                this.props.addLatinNoteHandler()
-              }}
-            />
-            <CustomButton
-              title="Add a counter note"
-              onClickHandler={() => {
-                this.props.addCounterNoteHandler()
-              }}
-              colors={orangeButton}
-            />
-          </div>
+          <CustomButton
+            title="Add a latin note"
+            colors={blueButton}
+            onClickHandler={() => {
+              this.props.addLatinNoteHandler()
+            }}
+          />
+          <CustomButton
+            title="Add a counter note"
+            colors={orangeButton}
+            onClickHandler={() => {
+              this.props.addCounterNoteHandler()
+            }}
+          />
         </header>
       </div>
     )
