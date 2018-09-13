@@ -36,7 +36,7 @@ export default class HttpClient implements IHttpClient {
 }
 
 export const HttpClientFactory = () => {
-  if (process.env && process.env.NODE_ENV && process.env.NODE_ENV === 'test') {
+  if (process.env.NODE_ENV && process.env.NODE_ENV === 'test') {
     return new MockHttpClient()
   } else {
     return new HttpClient()
