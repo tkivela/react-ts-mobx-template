@@ -19,7 +19,7 @@ const noteStyle = (props) => css`
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 20px h3 {
+  padding: 20px {
     font-family: sans-serif;
   }
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 0, 0, 0.1) inset;
@@ -36,11 +36,9 @@ export default class extends React.Component<INoteProps> {
       <div className={noteStyle(this.props)}>
         {this.props.note.content.state === 'pending' ? <i>loading...</i> : null}
 
-        {this.props.note.content.state === 'fulfilled' ? (
-          <>{this.props.note.content.value.name}</>
-        ) : null}
+        {this.props.note.content.state === 'fulfilled' ? this.props.note.content.value.name : null}
 
-        {this.props.note.content.state === 'rejected' ? <>Error fetching the note</> : null}
+        {this.props.note.content.state === 'rejected' ? 'Error fetching the note' : null}
       </div>
     )
   }
