@@ -7,5 +7,5 @@ import Root from './Root'
 
 configure({ enforceActions: 'observed' })
 
-ReactDOM.render(<Root />, document.getElementById('root') as HTMLElement)
+ReactDOM.render(<Root />, document.getElementById('root'))
 registerServiceWorker()
