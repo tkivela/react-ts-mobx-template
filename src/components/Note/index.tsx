@@ -12,6 +12,7 @@ const noteStyle = (props) => css`
   height: 160px;
   float: left;
   margin: 25px 15px;
+  padding: 20px;
   border-radius: 5px;
   background-color: rgb(${props.note.color.r}, ${props.note.color.g}, ${props.note.color.b});
 

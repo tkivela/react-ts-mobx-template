@@ -27,15 +27,11 @@ export const darkButton: IButtonColors = {
 }
 
 const buttonStyle = (props) => css`
-  body {
-    font-family: 'sans-serif';
-  }
   border-radius: 5px;
   padding: 15px;
   font-size: 22px;
   margin: 10px;
   color: #fff;
-  display: inline-block;
   background-color: ${props.colors.backgroundColor};
   box-shadow: 0px 2px 0px 0px ${props.colors.boxShadow};
 
