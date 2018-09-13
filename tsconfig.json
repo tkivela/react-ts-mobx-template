@@ -24,10 +24,6 @@
     "node_modules",
     "build",
     "scripts",
-    "acceptance-tests",
-    "webpack",
-    "jest",
-    "config-overrides.js",
-    "src/setupTests.ts"
+    "config-overrides.js"
   ]
 }
