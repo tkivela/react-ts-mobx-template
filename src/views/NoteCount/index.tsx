@@ -8,7 +8,6 @@ const noteCountStyles = css`
 `
 
 interface INoteCountProps {
-  path?: string
   notescount: number
 }
 

@@ -5,7 +5,6 @@ import Note from '../../components/Note'
 import { INote } from '../../stores/notes'
 
 interface INotesProps {
-  path?: string
   notes: INote[]
 }
 

@@ -41,9 +41,9 @@ export default class App extends React.Component<IAppProps> {
   private renderView() {
     switch (this.props.viewStore!.currentView) {
       case VIEW.NOTES:
-        return <Notes path="/" notes={this.props.notesStore!.notes} />
+        return <Notes notes={this.props.notesStore!.notes} />
       case VIEW.NOTECOUNT:
-        return <NoteCount path="/notecount" notescount={this.props.notesStore!.notescount} />
+        return <NoteCount notescount={this.props.notesStore!.notescount} />
       default:
         return <></>
     }
