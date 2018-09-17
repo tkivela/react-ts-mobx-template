@@ -10,7 +10,7 @@
     "format": "prettier --write 'src/**/*.ts*'"
   },
   "dependencies": {
-    "emotion": "9.2.8",
+    "emotion": "9.2.9",
     "mobx": "5.1.1",
     "mobx-react": "5.2.8",
     "mobx-utils": "5.0.2",
@@ -22,12 +22,12 @@
   },
   "devDependencies": {
     "@types/jest": "23.3.2",
-    "@types/node": "10.9.4",
+    "@types/node": "10.10.0",
     "@types/react": "16.4.14",
     "@types/react-dom": "16.0.7",
     "babel": "6.23.0",
     "babel-plugin-transform-decorators": "6.24.1",
-    "babel-preset-mobx": "1.0.3",
+    "babel-preset-mobx": "2.0.0",
     "mobx-react-devtools": "6.0.3",
     "prettier": "1.14.2",
     "react-app-rewire-mobx": "1.0.9",
