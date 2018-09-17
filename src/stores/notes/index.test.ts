@@ -1,5 +1,6 @@
 import { when } from 'mobx'
 
+import { RootStore } from '../'
 import JsonPlaceHolderApi from '../../apis/jsonplaceholder'
 import { HttpClientFactory } from '../../utils/httpclient'
 import {
@@ -9,10 +10,12 @@ import {
 import NotesStore from './index'
 
 describe('NotesStore', () => {
+  let rootStore: RootStore
   let store: NotesStore
 
   beforeEach(() => {
-    store = new NotesStore() // Rest endpoints are automatically using MockRestStore when run under test -env variable
+    rootStore = new RootStore()
+    store = new NotesStore(rootStore) // Rest endpoints are automatically using MockRestStore when run under test -env variable
     JsonPlaceHolderApi.getCommentRest = HttpClientFactory() // Reset rest endpoint so we get correct toHaveBeenCalledTimes
   })
 

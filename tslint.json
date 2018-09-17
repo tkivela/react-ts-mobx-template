@@ -10,6 +10,7 @@
     "no-floating-promises": false,
     "jsx-no-lambda": false,
     "object-literal-sort-keys": false,
-    "no-implicit-dependencies": false // There is a bug in TSLint which complains about missing depency for "react-testing-library" so we'll have this linting rule disabled for now
+    "no-implicit-dependencies": false, // There is a bug in TSLint which complains about missing depency for "react-testing-library" so we'll have this linting rule disabled for now
+    "no-submodule-imports": false
   }
 }

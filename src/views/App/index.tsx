@@ -1,5 +1,9 @@
+import 'react-s-alert/dist/s-alert-css-effects/bouncyflip.css'
+import 'react-s-alert/dist/s-alert-default.css'
+
 import { inject, observer } from 'mobx-react'
 import * as React from 'react'
+import Alert from 'react-s-alert'
 
 import TopNavigation from '../../components/TopNavigation'
 import { NotesStore, ViewStore } from '../../stores'
@@ -19,6 +23,7 @@ export default class App extends React.Component<IAppProps> {
   public render() {
     return (
       <>
+        <Alert stack={{ limit: 5 }} />
         <TopNavigation
           addLatinNoteHandler={() => {
             this.props.notesStore!.addLatinNoteAsync()

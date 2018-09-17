@@ -1,6 +1,7 @@
 import { action, computed, observable } from 'mobx'
 import { fromPromise, IPromiseBasedObservable } from 'mobx-utils'
 
+import { RootStore } from '../'
 import JsonPlaceHolderApi, { IJsonPlaceHolderGetCommentResponse } from '../../apis/jsonplaceholder'
 
 interface INoteColor {
@@ -32,6 +33,9 @@ const getRandomColor = (): INoteColor => {
 
 export default class NotesStore {
   @observable
+  public rootStore: RootStore
+
+  @observable
   public counter: number = 0
   @observable
   public notes: INote[] = []
@@ -39,6 +43,10 @@ export default class NotesStore {
   @computed
   get notescount() {
     return this.notes.length
+  }
+
+  constructor(rootStore: RootStore) {
+    this.rootStore = rootStore
   }
 
   @action
@@ -53,7 +61,7 @@ export default class NotesStore {
         })
       )
     }
-
+    this.rootStore.notificationsStore.addErrorNotification('Andyy!')
     this.addNoteToArray(note)
   }
 
@@ -64,16 +72,21 @@ export default class NotesStore {
   }
 
   @action
-  public async addLatinNoteNumberAsync(commentNumber: number): Promise<INote> {
-    const note: INote = {
-      id: new Date().getTime().toString(),
-      color: getRandomColor(),
-      content: fromPromise<IJsonPlaceHolderGetCommentResponse>(
-        JsonPlaceHolderApi.getComment(commentNumber)
-      )
+  public async addLatinNoteNumberAsync(commentNumber: number): Promise<INote | null> {
+    try {
+      const content = fromPromise(JsonPlaceHolderApi.getComment(commentNumber))
+      const note: INote = {
+        id: new Date().getTime().toString(),
+        color: getRandomColor(),
+        content
+      }
+      this.addNoteToArray(note)
+      await content // We await content because if we have an error there, catch block will handle it here
+      return note
+    } catch (error) {
+      this.rootStore.notificationsStore.addErrorNotification('Error getting note from API!')
     }
-    this.addNoteToArray(note)
-    return note
+    return null
   }
 
   @action
