@@ -61,7 +61,6 @@ export default class NotesStore {
         })
       )
     }
-    this.rootStore.notificationsStore.addErrorNotification('Andyy!')
     this.addNoteToArray(note)
   }
 
