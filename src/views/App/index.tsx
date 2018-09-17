@@ -37,6 +37,9 @@ export default class App extends React.Component<IAppProps> {
           noteCountsPageButtonHandler={() => {
             this.props.viewStore!.showNoteCountView()
           }}
+          exampleErrorFromApiButtonHandler={() => {
+            this.props.notesStore!.addLatinNoteNumberAsync(600)
+          }}
         />
         {this.renderView()}
       </>

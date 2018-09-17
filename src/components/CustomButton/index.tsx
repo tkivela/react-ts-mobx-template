@@ -20,6 +20,12 @@ export const orangeButton: IButtonColors = {
   hoverBackgroundColor: '#FF983C'
 }
 
+export const redButton: IButtonColors = {
+  backgroundColor: '#f92222',
+  boxShadow: '#FF6509',
+  hoverBackgroundColor: '#fa6666'
+}
+
 export const darkButton: IButtonColors = {
   backgroundColor: '#50573b;',
   boxShadow: '#6e09cd',

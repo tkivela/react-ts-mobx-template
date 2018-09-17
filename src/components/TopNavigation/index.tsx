@@ -2,7 +2,12 @@ import { css } from 'emotion'
 import { observer } from 'mobx-react'
 import * as React from 'react'
 
-import CustomButton, { blueButton, darkButton, orangeButton } from '../../components/CustomButton'
+import CustomButton, {
+  blueButton,
+  darkButton,
+  orangeButton,
+  redButton
+} from '../../components/CustomButton'
 
 const appStyles = css`
   font-family: sans-serif;
@@ -20,6 +25,7 @@ interface IAppProps {
   addCounterNoteHandler: () => void
   notesPageButtonHandler: () => void
   noteCountsPageButtonHandler: () => void
+  exampleErrorFromApiButtonHandler: () => void
 }
 
 @observer
@@ -55,6 +61,13 @@ export default class extends React.Component<IAppProps> {
             colors={orangeButton}
             onClickHandler={() => {
               this.props.addCounterNoteHandler()
+            }}
+          />
+          <CustomButton
+            title="Cause error in API"
+            colors={redButton}
+            onClickHandler={() => {
+              this.props.exampleErrorFromApiButtonHandler()
             }}
           />
         </header>
