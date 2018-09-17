@@ -8,10 +8,10 @@ const noteStyle = (props) => css`
   font-size: 1.25em;
 
   width: 20%;
-  height: 160px;
+  height: 140px;
   float: left;
-  margin: 25px 15px;
-  padding: 20px;
+  margin: 10px 10px;
+  padding: 10px;
   border-radius: 5px;
   background-color: rgb(${props.note.color.r}, ${props.note.color.g}, ${props.note.color.b});
 
