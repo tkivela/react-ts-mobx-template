@@ -33,6 +33,7 @@ export const darkButton: IButtonColors = {
 }
 
 const buttonStyle = (props) => css`
+  min-width: 220px;
   border-radius: 5px;
   padding: 15px;
   font-size: 22px;

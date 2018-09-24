@@ -7,6 +7,7 @@ import { INote } from '../../stores/notes'
 const noteStyle = (props) => css`
   font-size: 1.25em;
 
+  min-width: 200px;
   width: 20%;
   height: 140px;
   float: left;

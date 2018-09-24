@@ -12,6 +12,7 @@ import CustomButton, {
 const appStyles = css`
   font-family: sans-serif;
   text-align: center;
+  min-width: 300px;
 
   header {
     background-color: #d4cfcf;
